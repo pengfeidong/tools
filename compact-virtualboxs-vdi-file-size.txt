@@ -25,6 +25,7 @@ With a Windows Guest, download SDelete from Sysinternals and run this:
 
 
 4. Now run VBoxManage's modifymedium command with the --compact option:
+(https://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvdi)
 
 With a Linux Host run this:
 ------------------------------------------------------------------------------ 
