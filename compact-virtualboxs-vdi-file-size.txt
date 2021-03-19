@@ -1,0 +1,44 @@
+1. Run defrag in the guest (Windows only)
+
+
+2. Nullify free space:
+
+With a Linux Guest run this:
+------------------------------------------------------------------------------
+ dd if=/dev/zero of=/var/tmp/bigemptyfile bs=4096k ; rm /var/tmp/bigemptyfile
+------------------------------------------------------------------------------ 
+Or:
+------------------------------------------------------------------------------
+ telinit 1
+ mount -o remount,ro /dev/sda1
+ zerofree -v /dev/sda1
+ ------------------------------------------------------------------------------
+
+With a Windows Guest, download SDelete from Sysinternals and run this:
+------------------------------------------------------------------------------
+ sdelete.exe c: -z
+------------------------------------------------------------------------------ 
+(replace C: with the drive letter of the VDI)
+
+
+3. Shutdown the guest VM
+
+
+4. Now run VBoxManage's modifymedium command with the --compact option:
+
+With a Linux Host run this:
+------------------------------------------------------------------------------ 
+ vboxmanage modifymedium --compact "/path/to/thedisk.vdi"
+------------------------------------------------------------------------------ 
+
+With a Windows Host run this:
+------------------------------------------------------------------------------ 
+ VBoxManage.exe modifymedium --compact "c:\path\to\thedisk.vdi"
+ ------------------------------------------------------------------------------ 
+ VBoxManage is located here:C:\Program Files\Oracle\VirtualBox>VBoxManage.exe
+
+With a Mac Host run this:
+------------------------------------------------------------------------------ 
+ VBoxManage modifymedium --compact "/path/to/thedisk.vdi"
+ ------------------------------------------------------------------------------ 
+VBoxManage is located here: /Applications/VirtualBox.app/Contents/MacOS/VBoxManage
