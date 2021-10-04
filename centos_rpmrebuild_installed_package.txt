@@ -1,0 +1,9 @@
+# Install rpmrebuild
+sudo yum install rpmrebuild
+
+
+# Install your_package
+sudo yum install your_package
+
+# re-build
+rpmrebuild libicu-devel
